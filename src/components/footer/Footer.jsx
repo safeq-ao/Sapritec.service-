@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaInstagram, FaLinkedin, FaTwitter, FaVoicemail, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { MdOutlineMailOutline } from "react-icons/md";
 
 export function Footer () {
@@ -7,28 +7,30 @@ export function Footer () {
     <footer className="bg-footer text-text-footer flex flex-row p-10 justify-around">
       <div className="flex flex-row text-sm gap-10">
         <span>
-          <h2 className="font-bold">Sobre</h2>
-          <ul>
+          <h2 className="font-bold mb-2">Sobre</h2>
+          <ul className="flex flex-col gap-2">
             <li>Home</li>
             <li>Pesquisar</li>
-            <li>Favorito</li>
+            <li>Favoritos</li>
             <li>Chat</li>
           </ul>
         </span>
 
         <span>
-          <ul>
-            <h2 className="font-bold">Ajuda</h2>
+          <h2 className="font-bold mb-2">Ajuda</h2>
+          <ul className="flex flex-col gap-2">
             <li>Centro de ajuda</li>
             <li>FAQs</li>
           </ul>
         </span>
 
         <span>
-          <h2 className=" font-bold">Contacto</h2>
-          <ul>
-            <li>Telefone</li>
-            <li>Email</li>
+          <h2 className=" font-bold mb-2">Contacto</h2>
+          <ul className="flex flex-col gap-2">
+            <li>Telefone:</li>
+            <li>(+244) 923 456 7893</li>
+            <li>Email:</li>
+            <li>sapritecservice@email.com</li>
           </ul>
         </span>
       </div>
@@ -54,10 +56,10 @@ export function Footer () {
           </button>
         </span>
         <span className="flex items-center gap-3">
-          <FaTwitter />
-          <FaInstagram />
-          <FaLinkedin />
-          <FaYoutube />
+          <FaTwitter color="#2EBAE8" />
+          <FaFacebook color="#2E6FE8" />
+          <FaLinkedin color="#7797E4" />
+          <FaYoutube color="#E82E2E" />
         </span>
         <p>&copy;2024</p>
       </div>
