@@ -7,6 +7,8 @@ export default {
         botao: "#4069E5",
         white: "#FFFFFF",
         legenda: "#9095A1",
+        footer: "#1E2128",
+        "text-footer": "#DEE1E6",
       },
       fontSize: {
         18: "18px",

@@ -10,7 +10,7 @@ import { Navigation, Pagination } from "swiper/modules";
 
 export function PaginaDeBusca() {
   return (
-    <div className="flex flex-col border-2 border-black p-10 h-auto w-auto">
+    <div className="flex flex-col p-10 h-auto w-auto">
       <div className="flex flex-col items-center gap-10">
         <h1 className="font-bold text-32">
           Explore por <b className="text-botao">categoria</b>
@@ -58,7 +58,7 @@ export function PaginaDeBusca() {
         </div>
       </div>
 
-      {/* card services */}
+      {/* servicos que podes precisar */}
       <div className="flex flex-col items-center m-10">
         <h1 className="font-bold text-32 text-botao">
           Serviços que pode precisar
@@ -103,6 +103,10 @@ export function PaginaDeBusca() {
             );
           })}
         </div>
+
+        <button className="w-[100px] h-[52px] bg-botao rounded-[4px] mt-10 text-white text-18">
+          Ver mais
+        </button>
       </div>
     </div>
   );
