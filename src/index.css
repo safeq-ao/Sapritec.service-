@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-  font-size:62.5%;
+body{
+  @apply bg-white text-[62.5%] m-0 p-0 box-border
 }
