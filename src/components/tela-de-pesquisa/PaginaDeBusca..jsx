@@ -10,7 +10,7 @@ import { Navigation, Pagination } from "swiper/modules";
 
 export function PaginaDeBusca() {
   return (
-    <div className="flex flex-col p-10 h-auto w-auto">
+    <main className="flex flex-col p-10 h-auto w-auto">
       <div className="flex flex-col items-center gap-10">
         <h1 className="font-bold text-32">
           Explore por <b className="text-botao">categoria</b>
@@ -68,7 +68,7 @@ export function PaginaDeBusca() {
           Pesquise, escolhe e solicite serviços com rapidez.
         </h2>
 
-        <div className="flex flex-row mt-10 flex-wrap gap-4 justify-center">
+        <article className="flex flex-row mt-10 flex-wrap gap-4 justify-center">
           {services.map((service) => {
             return (
               <div
@@ -77,7 +77,7 @@ export function PaginaDeBusca() {
               >
                 <div className="flex flex-row items-center gap-3">
                   <img
-                    src={"/src/utils/image/capa.png"}
+                    src={service.imagem}
                     className="w-20 rounded-[6px] object-cover"
                     alt="imagem dos serviços"
                   />
@@ -102,12 +102,12 @@ export function PaginaDeBusca() {
               </div>
             );
           })}
-        </div>
+        </article>
 
         <button className="w-[100px] h-[52px] bg-botao rounded-[4px] mt-10 text-white text-18">
           Ver mais
         </button>
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,19 +1,18 @@
-import { Outlet } from "react-router-dom";
 import { Footer } from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import { TelaImagem } from "./components/tela-de-imagem/telaImagem"
 import { PaginaDeBusca } from "./components/tela-de-pesquisa/PaginaDeBusca."
 
 
-function App() {
+function Home() {
 
   return (
-    <div className="">
-      <Header/>
-      <Outlet/>
-      <Footer/>
-    </div>
+    <>
+      <TelaImagem />
+      <PaginaDeBusca />
+    </>
+   
   );
 }
 
-export default App
+export default Home
