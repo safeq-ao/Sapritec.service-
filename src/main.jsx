@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import Pesquisar from './components/pesquisar/PesquisarServices.jsx'
+import Pesquisar from './components/pesquisar-servicos/PesquisarServices.jsx'
 import Home from './Home.jsx'
 
 const router=createBrowserRouter([
