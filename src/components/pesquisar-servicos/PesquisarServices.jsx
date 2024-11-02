@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { services } from "../tela-de-pesquisa/CardServices";
+import { services } from "../../utils/json/CardServices";
 import { PiHouseLine, PiMapPin, PiLineVerticalLight } from "react-icons/pi";
 import { MdOutlineKeyboardArrowDown, MdCalendarToday } from "react-icons/md";
 import { FaRegBookmark, FaRegCheckCircle, FaSearch } from "react-icons/fa";

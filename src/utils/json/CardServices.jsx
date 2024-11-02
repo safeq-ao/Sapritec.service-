@@ -1,5 +1,6 @@
 import { FaHeadSideCough, FaUserTie } from "react-icons/fa";
 import { Fa42Group, FaHeart } from "react-icons/fa6";
+
 export const cards = [
   {
     si: <FaUserTie size={"20px"} />,
@@ -106,4 +107,62 @@ export const services = [
     preco: "A partir de Kz 5.000 por hora",
   },
 ];
+
+export const mensagens = [
+  {
+    id: 1,
+    sender: "Juelma Pereira",
+    lastMessage: "Chamada de voz terminada",
+    time: "1:17 PM",
+  },
+  {
+    id: 2,
+    sender: "Evaristo Virgílio",
+    lastMessage: "Oi, você teria um tempinho para...",
+    time: "seg",
+  },
+  {
+    id: 3,
+    sender: "Domingos Daniel",
+    lastMessage: "Estou com dificuldade em...",
+    time: "dom",
+  },
+  {
+    id: 4,
+    sender: "Selina Francisco",
+    lastMessage: "Preciso de ajuda para estruturar melhor...",
+    time: "sex",
+  },
+  {
+    id: 5,
+    sender: "Emelia Teresa",
+    lastMessage: "Ótima ideia! Que horas?",
+    time: "Nov 4",
+  },
+  {
+    id: 6,
+    sender: "Francisco Daniel",
+    lastMessage: "Estou com dificuldade em...",
+    time: "Nov 3",
+  },
+  {
+    id: 7,
+    sender: "Miguel Daniel",
+    lastMessage: "Oi! Tudo bem?",
+    time: "Hoje",
+  },
+  {
+    id: 8,
+    sender: "Domingas Paula",
+    lastMessage: "Que tal a gente se encontrar no...",
+    time: "Set 28",
+  },
+  {
+    id: 9,
+    sender: "Paulo Domingos",
+    lastMessage: "Ok",
+    time: "Set 16",
+  },
+];
+
 

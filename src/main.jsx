@@ -12,23 +12,27 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Pesquisar from './components/pesquisar-servicos/PesquisarServices.jsx'
 import Home from './Home.jsx'
+import { ChatUser } from './components/tela-chat-usuario/chatUser.jsx'
 
-const router=createBrowserRouter([
+const router = createBrowserRouter([
   {
-    element:<App/>,
-    children:[
-        { 
-    path:'/',
-    element:<Home/>
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
       },
-       {
-    path:'/pesquisar',
-    element:<Pesquisar/>
+      {
+        path: "/pesquisar",
+        element: <Pesquisar />,
       },
-    ]
-  } 
- 
-])
+      {
+        path: "/chat",
+        element: <ChatUser />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

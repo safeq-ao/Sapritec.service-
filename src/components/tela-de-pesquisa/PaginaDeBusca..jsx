@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { PiHouseLine } from "react-icons/pi";
 import { FaRegBookmark } from "react-icons/fa";
 import { PiMapPin } from "react-icons/pi";
-import { cards, services } from "./CardServices";
+import { services, cards } from "../../utils/json/CardServices";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
