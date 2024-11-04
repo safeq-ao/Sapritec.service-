@@ -8,7 +8,7 @@ import { mensagens } from '../../utils/json/CardServices';
 
 const MenuMensagem = () => {
   return (
-    <aside className='border'>
+    <aside className='border p-5 gap-3 text-sm'>
       {/* pesquisar Mensagem */}
 
       <div className="flex gap-5">
@@ -26,22 +26,34 @@ const MenuMensagem = () => {
         </button>
       </div>
 
-      <p className=" flex items-center justify-between">
-        <p className='flex'>Todas mensagens <MdOutlineKeyboardArrowDown /></p>
+      <span className=" flex items-center justify-between m-2">
+        <p className='flex items-center'>Todas mensagens <MdOutlineKeyboardArrowDown size={"20px"} /></p>
         <p><HiOutlineEllipsisHorizontal/></p>
-      </p>
+      </span>
 
-    <div>
+    <div className='flex flex-col mt-3'>
         {mensagens.map(mensagem=>{
-            return(
-                <>
-                <span className='flex justify-between'>
-                    <p key={mensagem.id}>{mensagem.sender}</p>
-                    <p>{mensagem.time}</p>
+            return (
+              <div
+                key={mensagem.id}
+                className=" p-2 gap-3 flex items-center w-auto"
+              >
+                <span className="w-[30%] h-14 bg-orange-300 rounded-full items-center flex justify-center ">
+                  {mensagem.sender.slice(0, 1)}
                 </span>
-                <p>{mensagem.lastMessage}</p>
-                </>
-            )
+
+                <div className="flex flex-col w-[100%]">
+                  <span className="flex justify-between ">
+                    <h2>{mensagem.sender}</h2>
+                    <p className='text-legenda'>{mensagem.time}</p>
+                  </span>
+
+                  <span>
+                    <p className="break-words">{mensagem.lastMessage}</p>
+                  </span>
+                </div>
+              </div>
+            );
         })}
     </div>
 
