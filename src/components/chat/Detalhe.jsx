@@ -2,7 +2,7 @@ import React from 'react'
 
 const Detalhe = () => {
   return (
-    <aside className="border text-sm p-10">
+    <aside className="border text-sm p-4">
       <div className="flex flex-col items-center gap-5">
         <img
           src="src/utils/image/perfil.jpg"

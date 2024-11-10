@@ -8,7 +8,7 @@ import { mensagens } from '../../utils/json/CardServices';
 
 const MenuMensagem = () => {
   return (
-    <aside className='border p-5 gap-3 text-sm'>
+    <aside className='border p-3 gap-3 text-sm'>
       {/* pesquisar Mensagem */}
 
       <div className="flex gap-5">
@@ -32,7 +32,7 @@ const MenuMensagem = () => {
       </span>
 
     <div className='flex flex-col mt-3'>
-        {mensagens.map(mensagem=>{
+        {  mensagens.map(mensagem=>{
             return (
               <div
                 key={mensagem.id}
