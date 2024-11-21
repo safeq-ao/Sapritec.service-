@@ -1,15 +1,25 @@
-import { FaHeadSideCough, FaUserTie } from "react-icons/fa";
-import { Fa42Group, FaHeart } from "react-icons/fa6";
+import {
+  FaHeadSideCough,
+  FaUserTie,
+  FaHeart,
+ 
+} from "react-icons/fa";
+import {
+  FaPeopleRoof,
+  Fa42Group,
+  FaListCheck,
+  FaSackDollar,
+} from "react-icons/fa6";
 
 export const cards = [
   {
-    si: <FaUserTie size={"20px"} />,
+    si: <FaSackDollar size={"20px"} />,
     key: 1,
     service: "Finanças",
     quantity: "1234 serviços",
   },
   {
-    si: <FaHeadSideCough size={"20px"} />,
+    si: <FaUserTie size={"20px"} />,
     key: 2,
     service: "Educação",
     quantity: "1234 serviços",
@@ -51,7 +61,6 @@ export const cards = [
     quantity: "1234 serviços",
   },
 ];
-
 
 export const services = [
   {
@@ -165,4 +174,26 @@ export const mensagens = [
   },
 ];
 
-
+export const resumos = [
+  {
+    key: 1,
+    total: "Total ganho",
+    icon: <FaSackDollar size={"20px"} />,
+    valor: "300.000 kz",
+    cor: "#FFF8F0",
+  },
+  {
+    key: 2,
+    total: "Total de pedidos",
+    icon: <FaListCheck size={"20px"} />,
+    valor: "600",
+    cor: "#F9F8F5",
+  },
+  {
+    key: 3,
+    total: "Novos clientes",
+    icon: <FaPeopleRoof size={"20px"}/>,
+    valor: "100",
+    cor: "#F5F2FD",
+  },
+];

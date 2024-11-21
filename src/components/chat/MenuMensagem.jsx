@@ -17,7 +17,7 @@ const MenuMensagem = () => {
           <input
             type="search"
             placeholder="Consultoria educacional"
-            className="outline-none h-[100%] bg-[#F3F4F6] w-64 p-2"
+            className="outline-none h-[100%] bg-pesquisar w-64 p-2"
           />
         </span>
 

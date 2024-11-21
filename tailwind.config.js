@@ -8,7 +8,9 @@ export default {
         white: "#FFFFFF",
         legenda: "#9095A1",
         footer: "#1E2128",
-        "text-footer": "#DEE1E6",
+        pesquisar:'#F3F4F6',
+        fundo:'#F3F4F6',
+        "text-footer": "#DEE1E6"
       },
       fontSize: {
         18: "18px",

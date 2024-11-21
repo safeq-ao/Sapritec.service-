@@ -1,16 +1,14 @@
-import { React, useContext } from "react";
+import { React} from "react";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { TiDocumentText } from "react-icons/ti";
 import { PiChartBarThin } from "react-icons/pi";
 import { TbMessageDown } from "react-icons/tb";
 import { LiaTasksSolid, LiaCoinsSolid } from "react-icons/lia";
 import { IoSettingsOutline } from "react-icons/io5";
-import { C_Provider } from "../../../utils/context/autentication";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
 
-    const { ShowSom, setShowSom } = useContext(C_Provider);
   return (
     <aside className="flex flex-col h-auto justify-between border border-pink text-sm">
       <div className="p-5  flex flex-col gap-9">
@@ -23,7 +21,7 @@ const Sidebar = () => {
             <Link to={"/dashboard"}>
               <li
                 className="flex items-center gap-2"
-                onClick={() => setShowSom(1)}
+                // onClick={() => setShowSom(1)}
               >
                 <LuLayoutDashboard size={"20px"} />
                 Dashboard
@@ -33,7 +31,7 @@ const Sidebar = () => {
 
             <li
               className="flex items-center gap-2"
-              onClick={() => setShowSom(2)}
+              // onClick={() => setShowSom(2)}
             >
               <TiDocumentText size={"20px"} />
               Resumo de Pedidos
@@ -42,7 +40,7 @@ const Sidebar = () => {
             <Link to={"/recebidos"}>
               <li
                 className="flex items-center gap-2"
-                onClick={() => setShowSom(3)}
+                // onClick={() => setShowSom(3)}
               >
                 <LiaTasksSolid size={"20px"} />
                 Pedidos Recebidos
@@ -51,7 +49,7 @@ const Sidebar = () => {
             <Link to={"/historico"}>
               <li
                 className="flex items-center gap-2"
-                onClick={() => setShowSom(4)}
+                // onClick={() => setShowSom(4)}
               >
                 <PiChartBarThin size={"20px"} /> Histórico de Pedidos
               </li>
@@ -59,7 +57,7 @@ const Sidebar = () => {
             <Link to={"/mensagem"}>
               <li
                 className="flex items-center gap-2"
-                onClick={() => setShowSom(5)}
+                // onClick={() => setShowSom(5)}
               >
                 <TbMessageDown size={"20px"} /> Mensagem
               </li>
@@ -68,7 +66,7 @@ const Sidebar = () => {
             <Link to={"pagamentos"}>
               <li
                 className="flex items-center gap-2"
-                onClick={() => setShowSom(6)}
+                // onClick={() => setShowSom(6)}
               >
                 <LiaCoinsSolid size={"20px"} />
                 Pagamentos e Transações

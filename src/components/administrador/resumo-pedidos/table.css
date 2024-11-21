@@ -1,0 +1,35 @@
+
+.table-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-radius:50px;
+}
+
+thead {
+  background-color: #DEE1E6;
+}
+
+th, td {
+  padding: 20px;
+  text-align: left;
+}
+
+tbody tr {
+  cursor: pointer;
+  transition: background-color 0.3sease;   
+}
+
+tbody tr:hover {
+  background-color: #f0f8ff; /* Azul claro ao passar o mouse */
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 5px;
+}

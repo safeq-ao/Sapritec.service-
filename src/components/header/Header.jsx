@@ -10,10 +10,16 @@ const Header = () => {
 
       <nav>
         <ul className="flex flex-row gap-5 text-14">
-          <li>Home</li>
-          <li>Pesquisar</li>
+          <Link to="/home">
+            <li>Home</li>
+          </Link>
+          <Link to="/pesquisar">
+            <li>Pesquisar</li>
+          </Link>
           <li>Favoritos</li>
-          <li>Chat</li>
+          <Link to="/chat">
+            <li>Chat</li>
+          </Link>
         </ul>
       </nav>
 

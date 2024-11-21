@@ -21,7 +21,7 @@ export function PaginaDeBusca() {
           <input
             type="search"
             placeholder="Pesquisar por serviços..."
-            className="outline-none h-[100%] bg-[#F3F4F6] w-64"
+            className="outline-none h-[100%] bg-pesquisar w-64"
           />
 
           <select name="option" className="bg-[#F3F4F6] h-[100%] outline-none">

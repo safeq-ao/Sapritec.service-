@@ -26,7 +26,7 @@ const Pesquisar = () => {
       <div className="flex flex-row justify-between">
         <div className="flex flex-col gap-3">
           <p className="font-bold">Pesquisar</p>
-          <span className="flex flex-row items-center w-52 h-8  rounded-[6px] bg-[#F3F4F6]">
+          <span className="flex flex-row items-center w-52 h-8  rounded-[6px] bg-pesquisar">
             <FaSearch size={"20px"} className="m-3 bg-[#F3F4F6] h-[100%]" />
             <input
               type="search"
