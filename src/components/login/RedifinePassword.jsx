@@ -5,7 +5,7 @@ const RedifinePassword = () => {
 
   return (
     <div className="bg-white flex-col p-10">
-      <header className="flex justify-between">
+      <header className="flex">
         <h1>
           <b className="text-botao">Sapritec</b>.service
         </h1>
@@ -33,13 +33,13 @@ const RedifinePassword = () => {
               />
             </label>
             <label
-              htmlFor="new-password"
+              htmlFor="current-password"
               className="flex flex-col font-semibold gap-2"
             >
               Digite novamente a senha
               <input
                 type="password"
-                id="new-password"
+                id="current-password"
                 className="border-legenda border outline-none p-2 rounded-[26px]"
               />
             </label>

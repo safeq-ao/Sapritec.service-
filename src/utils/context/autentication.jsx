@@ -1,13 +1,12 @@
 import { useState, createContext } from "react";
 
-export const C_Provider = createContext();
-
+export const CProvider = createContext([]);
 
 export default function Context({ children }) {
-    const [SetRole, Role] = useState("cliente");
+    const [logged, setLogged] = useState(false);
   return (
-    <C_Provider.Provider value={{ SetRole, Role }}>
-        {children}
-    </C_Provider.Provider>
+    <CProvider.Provider value={{ logged, setLogged   }}>
+      {children}
+    </CProvider.Provider>
   );
 }

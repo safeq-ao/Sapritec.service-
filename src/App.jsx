@@ -1,28 +1,31 @@
 import { Outlet } from "react-router-dom";
 import { Footer } from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import { useContext, useState } from "react";
-import { C_Provider } from "./utils/context/autentication";
+import { useContext} from "react";
+import { CProvider } from "./utils/context/autentication";
 import Sidebar from "./components/administrador/sidebar-admin/Sidebar";
 import Cadastrar from "./components/login/Cadastrar";
 
 
 function App() {
-  // const {Role}=useContext(C_Provider)
-  const Role="cliente"
+
+  const role="cliente"
+  const {logged}=useContext(CProvider)
   return (
     <>
-      {Role === "cliente" && (
+     
+      {role === "cliente" && (
         <>
-          <Header />
+          {logged == true && <Header />}
           <Outlet />
-          <Footer />
+          {logged == true && <Footer />}
         </>
       )}
 
-      {Role === "empresa" && (
+      {role === "empresa" && (
         <div className="flex">
-          <Cadastrar />
+          <Sidebar />
+          <Outlet />
         </div>
       )}
     </>

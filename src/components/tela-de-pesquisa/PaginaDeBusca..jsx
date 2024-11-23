@@ -28,7 +28,7 @@ export function PaginaDeBusca() {
             <option value="" disabled>
               Escolha a sua opção
             </option>
-            <option value="1" selected>
+            <option value="1" >
               Localização
             </option>
             <option value="2">Serviço</option>

@@ -5,16 +5,11 @@ import { Link } from "react-router-dom";
 const PasswordChanged = () => {
   return (
     <div className="bg-white flex-col p-10">
-      <header className="flex justify-between">
+      <header className="flex">
         <h1>
           <b className="text-botao">Sapritec</b>.service
         </h1>
-        <p>
-          Não tem uma conta?
-          <Link to={"/"}>
-            <b className="text-botao"> Cadastre-se agora</b>
-          </Link>
-        </p>
+
       </header>
 
       <div className="flex justify-center">

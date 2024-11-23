@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-
+import { CProvider } from '../../utils/context/autentication';
 const Login = () => {
+  const {logged, setLogged}=useContext(CProvider)
      const navigate = useNavigate();
-
-     function HandleLogin() {
+     
+     function HandleLogin(event) {
+      event.preventDefault();
        navigate("/home");
+       setLogged(true)
+       console.log("logged")
      }
   return (
     <div className="bg-white flex-col p-10">
@@ -59,8 +63,9 @@ const Login = () => {
           </div>
 
           <button
-            className="p-2 w-[100%] text-white rounded-[26px] self-center bg-botao text-sm"
+            className="p-2 w-full text-white rounded-3xl bg-botao hover:bg-blue-600 text-sm font-medium"
             onClick={HandleLogin}
+            type="submit"
           >
             Continuar
           </button>
