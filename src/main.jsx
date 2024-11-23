@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Pesquisar from './components/pesquisar-servicos/PesquisarServices.jsx'
 import Home from './Home.jsx'
-import { ChatUser } from './components/tela-chat-usuario/chatUser.jsx'
+import { ChatUser } from './components/tela-chat-usuario/ChatUser.jsx'
 import HomeAdmin from './components/administrador/Home-admin/HomeAdmin.jsx'
 import Context from './utils/context/autentication.jsx'
 import Resumo from './components/administrador/resumo-pedidos/Resumo.jsx'
