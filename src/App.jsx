@@ -4,12 +4,14 @@ import Header from "./components/header/Header";
 import { useContext} from "react";
 import { CProvider } from "./utils/context/autentication";
 import Sidebar from "./components/administrador/sidebar-admin/Sidebar";
-import Cadastrar from "./components/login/Cadastrar";
+import SidebarAdm from "./components/adm/SidebarAdm";
+import MainContentAdm from "./components/adm/MainContentAdm";
+
 
 
 function App() {
 
-  const role="cliente"
+  const role="adm"
   const {logged}=useContext(CProvider)
   return (
     <>
@@ -27,6 +29,15 @@ function App() {
           <Sidebar />
           <Outlet />
         </div>
+      )}
+      {role==="adm" &&(
+        <div className="flex">
+        
+        <SidebarAdm/>
+        <MainContentAdm/>
+        
+        </div>
+        
       )}
     </>
   );
