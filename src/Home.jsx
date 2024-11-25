@@ -1,6 +1,4 @@
-import { Footer } from "./components/footer/Footer"
-import Header from "./components/header/Header"
-import { TelaImagem } from "./components/tela-de-imagem/telaImagem"
+import TelaImagem from "./components/tela-de-imagem/TelaImagem"
 import { PaginaDeBusca } from "./components/tela-de-pesquisa/PaginaDeBusca."
 
 
