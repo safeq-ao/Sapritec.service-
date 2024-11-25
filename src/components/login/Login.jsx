@@ -1,17 +1,34 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { CProvider } from '../../utils/context/autentication';
 const Login = () => {
-  const {logged, setLogged}=useContext(CProvider)
-     const navigate = useNavigate();
-     
-     function HandleLogin(event) {
-      event.preventDefault();
-       navigate("/home");
-       setLogged(true)
-       console.log("logged")
-     }
+  // credenciais de login
+  const [dados, setDados] = useState({
+    email: "",
+    senha: "",
+  });
+
+  // verificao estado de login do user
+  const { logged, setLogged } = useContext(CProvider);
+  const navigate = useNavigate();
+
+  //funcao que redirectiona o tela home
+  function HandleLogin(event) {
+    event.preventDefault();
+
+    if(dados.email.trim() && dados.senha.trim()){
+      //funcao que redirectiona o tela home
+      setLogged(true);
+      navigate("/home");
+    }else{
+        window.alert("Preencha todos os campos correctamente");
+    }
+
+
+
+  }
+
   return (
     <div className="bg-white flex-col p-10">
       <header className="flex justify-between">
@@ -40,6 +57,7 @@ const Login = () => {
                 type="email"
                 id="email"
                 className="border-legenda border outline-none p-2 rounded-[26px]"
+                onChange={(e) => setDados({ ...dados, email: e.target.value })}
               />
             </label>
             <label
@@ -51,6 +69,7 @@ const Login = () => {
                 type="password"
                 id="password"
                 className="border-legenda border outline-none p-2 rounded-[26px]"
+                onChange={(e) => setDados({ ...dados, senha: e.target.value })}
               />
               <span className="flex">
                 <p>
