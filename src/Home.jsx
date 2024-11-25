@@ -1,4 +1,4 @@
-import TelaImagem from "./components/tela-de-imagem/TelaImagem"
+import {TelaImagem} from "./components/tela-de-imagem/TelaImagem"
 import { PaginaDeBusca } from "./components/tela-de-pesquisa/PaginaDeBusca."
 
 
