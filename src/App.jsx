@@ -11,7 +11,7 @@ import MainContentAdm from "./components/adm/MainContentAdm";
 
 function App() {
 
-  const role="adm"
+  const role="cliente"
   const {logged}=useContext(CProvider)
   return (
     <>
