@@ -1,45 +1,39 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Footer } from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import { useContext} from "react";
+import { useContext, useEffect, useState } from "react";
 import { CProvider } from "./utils/context/autentication";
 import Sidebar from "./components/administrador/sidebar-admin/Sidebar";
 import SidebarAdm from "./components/adm/SidebarAdm";
 import MainContentAdm from "./components/adm/MainContentAdm";
+import { SProvider } from "./utils/context/sizes";
+import { FaHome, FaSearch } from "react-icons/fa";
+import { MdOutline10K, MdChat } from "react-icons/md";
 
+function App() { 
+  const { logged, setLogged } = useContext(CProvider);
 
+  
+  // useEffect(() => {
+    
+  //   const token = localStorage.getItem("myTokenUser");
+  //   const GetUserInLocalStorage = localStorage.getItem("role");
+  //  }, []);
 
-function App() {
-
-  const role="cliente"
-  const {logged}=useContext(CProvider)
   return (
-    <>
-     
-      {role === "cliente" && (
-        <>
-          {logged == true && <Header />}
+    <div>
+      <div>
+        {logged ? (
+          <>
+            <Header />
+            <Outlet />
+            <Footer />
+          </>
+        ) : (
           <Outlet />
-          {logged == true && <Footer />}
-        </>
-      )}
-
-      {role === "empresa" && (
-        <div className="flex">
-          <Sidebar />
-          <Outlet />
-        </div>
-      )}
-      {role==="adm" &&(
-        <div className="flex">
-        
-        <SidebarAdm/>
-        <MainContentAdm/>
-        
-        </div>
-        
-      )}
-    </>
+        )}
+      </div>
+    </div>
   );
 }
 

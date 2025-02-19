@@ -1,25 +1,42 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from "react";
 import { CiUser } from "react-icons/ci";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoExitOutline } from "react-icons/io5";
-import { Link, useNavigate } from 'react-router-dom'
-import { CProvider } from '../../utils/context/autentication';
+import Hamburger from "hamburger-react";
+import { Link, useNavigate } from "react-router-dom";
+import { SProvider } from "../../utils/context/sizes";
+import { CProvider } from "../../utils/context/autentication";
+
 
 const Header = () => {
+ 
+  const { logged, setLogged } = useContext(CProvider);
+  const {isOpen, setOpen} = useContext(SProvider);
+  console.log(isOpen)
 
-  const { setLogged } = useContext(CProvider);
   const navigate = useNavigate();
-  function HandleLogout(){
-    setLogged(false);
+  function HandleLogout() {
+  localStorage.removeItem("myTokenUser");
     navigate("/login");
+    setLogged(!logged)
   }
+
+  useEffect(()=>{
+    HandleLogout
+  }, [])
+
+  
+
   return (
-    <header className="flex flex-row  justify-between p-4 items-center">
+    <header className="flex justify-between items-center w-[100%]">
       <Link to={"/home"}>
-        <h2 className="text-18 ml-20">
+        <h2 className="text-[20px] ml-9">
           <b className="text-botao">Sapritec</b>.service
         </h2>
       </Link>
+
+      {/* <Hamburger toggled={isOpen} toggle={setOpen}/> */}
+
 
       <nav>
         <ul className="flex flex-row gap-5 text-14">
@@ -51,6 +68,6 @@ const Header = () => {
       </nav>
     </header>
   );
-}
+};
 
-export default Header
+export default Header;

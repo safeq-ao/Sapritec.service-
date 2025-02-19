@@ -2,7 +2,12 @@ import React from 'react'
 
 export const TelaImagem = () => {
   return (
-    <div className="bg-[url('/src/utils/image/capa.png')] object-cover h-[23rem] bg-cover bg-bottom flex flex-col  justify-center font-bold gap-3">
+    <div
+      className="
+    bg-[url('/src/utils/image/capa.png')] bg-cover bg-top flex flex-col justify-center gap-3 h-[20rem]
+    lg:object-cover lg:h-[23rem] lg:font-bold
+  "
+    >
       <h2 className="w-[15.4rem]  text-lg ml-10 ">
         Encontre Soluções Rápidas para Suas Necessidades
       </h2>

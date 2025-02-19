@@ -12,25 +12,32 @@ export function PaginaDeBusca() {
   return (
     <main className="flex flex-col p-10 h-auto w-auto">
       <div className="flex flex-col items-center gap-10">
-        <h1 className="font-bold text-32">
+        <h1
+          className="font-bold
+        
+        lg:(font-bold text-32)"
+        >
           Explore por <b className="text-botao">categoria</b>
         </h1>
 
-        <span className="flex flex-row items-center justify-center h-10  rounded-[6px] bg-[#F3F4F6]">
+        <span
+          className="
+        flex flex-row rounded-[6px] bg-[#F3F4F6] items-center justify-center h-10 w-90
+        lg:()"
+        >
           <FaSearch size={"20px"} className="m-3 bg-[#F3F4F6] h-[100%]" />
           <input
             type="search"
-            placeholder="Pesquisar por serviços..."
-            className="outline-none h-[100%] bg-pesquisar w-64"
+            placeholder="Pesquisar..."
+            className="outline-none h-[100%] bg-pesquisar
+            lg:(w-64)"
           />
 
           <select name="option" className="bg-[#F3F4F6] h-[100%] outline-none">
             <option value="" disabled>
               Escolha a sua opção
             </option>
-            <option value="1" >
-              Localização
-            </option>
+            <option value="1">Localização</option>
             <option value="2">Serviço</option>
             <option value="3">Empresa</option>
           </select>
@@ -43,8 +50,11 @@ export function PaginaDeBusca() {
           </button>
         </span>
 
-        <div className="flex flex-row w-[40rem] bg-black">
-          <Swiper slidesPerView={4} pagination={{ clickable: true }} navigation>
+        <div
+          className="flex flex-row w-[13rem] bg-black
+        lg:(w-[40rem])"
+        >
+          <Swiper slidesPerView={1} pagination={{ clickable: true }} navigation>
             {cards.map((c) => (
               <SwiperSlide key={c.key}>
                 <div className="flex flex-col bg-purple-200 p-10 w-[1] justify-center items-center">
@@ -60,16 +70,18 @@ export function PaginaDeBusca() {
 
       {/* servicos que podes precisar */}
       <div className="flex flex-col items-center m-10">
-        <h1 className="font-bold text-32 text-botao">
+        <h1 className="
+        font-bold text-botao text-sm
+        lg:(text-32)">
           Serviços que pode precisar
         </h1>
 
-        <h2 className="text-legenda">
+        <h2 className="text-legenda text-sm">
           Pesquise, escolhe e solicite serviços com rapidez.
         </h2>
 
         <article className="flex flex-row mt-10 flex-wrap gap-4 justify-center">
-          {services.map((service) => {
+          {services.slice(0,1).map((service) => {
             return (
               <div
                 key={service.key}

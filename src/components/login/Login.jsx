@@ -1,7 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
-import { CProvider } from '../../utils/context/autentication';
+import { CProvider } from "../../utils/context/autentication";
+import { useGoogleLogin } from "@react-oauth/google";
+import { googleAuth } from "../../utils/api/api";
+
 const Login = () => {
   // credenciais de login
   const [dados, setDados] = useState({
@@ -10,97 +13,101 @@ const Login = () => {
   });
 
   // verificao estado de login do user
-  const { logged, setLogged } = useContext(CProvider);
+  const { Login } = useContext(CProvider);
   const navigate = useNavigate();
 
-  //funcao que redirectiona o tela home
-  function HandleLogin(event) {
+  //funcao que redirectiona o tela home ao fazer login convencional
+  async function HandleLogin(event) {
     event.preventDefault();
 
-    if(dados.email.trim() && dados.senha.trim()){
-      //funcao que redirectiona o tela home
-      setLogged(true);
-      navigate("/home");
-    }else{
-        window.alert("Preencha todos os campos correctamente");
+    if (dados.email.trim() && dados.senha.trim()) {
+      await Login(dados.email, dados.senha);
+      if (localStorage.getItem("myTokenUser")) {
+        navigate("/home");
+      }
+    } else {
+      window.alert("Preencha todos os campos correctamente");
     }
-
-
-
   }
 
+  // google authentication
+
+  const responseGoogle = async (authResult) => {
+    try {
+      if (authResult["code"]) {
+        const result = await googleAuth(authResult.code);
+        console.log(result);
+        navigate("/home");
+      } else {
+        console.log(authResult);
+        throw new Error(authResult);
+      }
+    } catch (e) {
+      console.log("Erro ao carregar o Google Login para autenticação...", e);
+    }
+  };
+
+  const HandleLoginGoogle = useGoogleLogin({
+    onSuccess: responseGoogle,
+    onError: responseGoogle,
+    flow: "auth-code",
+  });
+
   return (
-    <div className="bg-white flex-col p-10">
-      <header className="flex justify-between">
+    <div className="w-full h-[100vh] flex flex-col justify-center items-center">
+      <header className="">
         <h1>
           <b className="text-botao">Sapritec</b>.service
         </h1>
-        <p>
-          Não tem uma conta?
-          <Link to={"/"}>
-            <b className="text-botao"> Cadastre-se agora</b>
-          </Link>
-        </p>
       </header>
 
-      <section className="flex flex-col items-center justify-center">
-        <h1 className="font-bold">Bem-vindo de volta</h1>
-
-        <form className="bg-white p-15 flex-col w-[35%] flex gap-5 rounded-2xl">
-          <div className="flex flex-col gap-5">
-            <label
-              htmlFor="email"
-              className="flex flex-col font-semibold gap-2"
-            >
-              Email
-              <input
-                type="email"
-                id="email"
-                className="border-legenda border outline-none p-2 rounded-[26px]"
-                onChange={(e) => setDados({ ...dados, email: e.target.value })}
-              />
-            </label>
-            <label
-              htmlFor="password"
-              className="flex flex-col font-semibold gap-2"
-            >
-              Senha
-              <input
-                type="password"
-                id="password"
-                className="border-legenda border outline-none p-2 rounded-[26px]"
-                onChange={(e) => setDados({ ...dados, senha: e.target.value })}
-              />
-              <span className="flex">
-                <p>
-                  <Link to={"/forgot-password"}>
-                    <b className="text-botao">Esqueceu a sua senha?</b>
-                  </Link>
-                </p>
-              </span>
-            </label>
+      <section className="w-[50%] justify-center items-center">
+        <form className="bg-white p-10 flex flex-col items-center gap-5 rounded-2xl">
+          <div className="flex flex-col items-center gap-5">
+            <input
+              type="email"
+              id="email"
+              className="border-legenda border outline-none p-2 w-56
+              rounded-[26px]
+              "
+              placeholder="email"
+              onChange={(e) => setDados({ ...dados, email: e.target.value })}
+            />
+            <input
+              type="password"
+              id="password"
+              className="border-legenda border outline-none p-2 w-56 
+              rounded-[26px]"
+              placeholder="password"
+              onChange={(e) => setDados({ ...dados, senha: e.target.value })}
+            />
+            <span className="flex">
+              <p>
+                <Link to={"/forgot-password"}>
+                  <b className="text-botao">Esqueceu a sua senha?</b>
+                </Link>
+              </p>
+            </span>
           </div>
 
           <button
-            className="p-2 w-full text-white rounded-3xl bg-botao hover:bg-blue-600 text-sm font-medium"
+            className="
+            p-2  w-56 bg-botao hover:bg-blue-600
+           text-white text-sm font-medium rounded-3xl"
             onClick={HandleLogin}
             type="submit"
           >
             Continuar
           </button>
 
-          <div className="flex items-center justify-center gap-1">
-            <hr className="bg-black w-[10%]" />
-            ou faça login com
-            <hr className="text-black w-[10%]" />
-          </div>
-          <span className="flex justify-center">
-            <FcGoogle size={"40px"} />
+          <div className="flex items-center justify-center gap-1"></div>
+          <span className="flex justify-center w-56 cursor-pointer">
+            <FcGoogle size={"40px"} onClick={HandleLoginGoogle} />
           </span>
         </form>
       </section>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;
