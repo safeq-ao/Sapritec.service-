@@ -18,7 +18,7 @@ const Sidebar = () => {
 
         <nav className="cursor-pointer">
           <ul className="flex flex-col gap-5 text-14">
-            <Link to={"/dashboard"}>
+            <Link to={"dashboard"}>
               <li
                 className="flex items-center gap-2"
                 // onClick={() => setShowSom(1)}
@@ -27,7 +27,7 @@ const Sidebar = () => {
                 Dashboard
               </li>
             </Link>
-            <Link to={"/resumo"}>
+            <Link to={"resumo"}>
 
             <li
               className="flex items-center gap-2"
@@ -37,7 +37,7 @@ const Sidebar = () => {
               Resumo de Pedidos
             </li>
             </Link>
-            <Link to={"/recebidos"}>
+            <Link to={"recebidos"}>
               <li
                 className="flex items-center gap-2"
                 // onClick={() => setShowSom(3)}
@@ -46,7 +46,7 @@ const Sidebar = () => {
                 Pedidos Recebidos
               </li>
             </Link>
-            <Link to={"/historico"}>
+            <Link to={"historico"}>
               <li
                 className="flex items-center gap-2"
                 // onClick={() => setShowSom(4)}
@@ -54,7 +54,7 @@ const Sidebar = () => {
                 <PiChartBarThin size={"20px"} /> Histórico de Pedidos
               </li>
             </Link>
-            <Link to={"/mensagem"}>
+            <Link to={"mensagem"}>
               <li
                 className="flex items-center gap-2"
                 // onClick={() => setShowSom(5)}

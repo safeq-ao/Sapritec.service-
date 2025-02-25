@@ -40,14 +40,14 @@ const Header = () => {
 
       <nav>
         <ul className="flex flex-row gap-5 text-14">
-          <Link to="/home">
+          <Link to="">
             <li>Home</li>
           </Link>
-          <Link to="/pesquisar">
+          <Link to="pesquisar">
             <li>Pesquisar</li>
           </Link>
           <li>Favoritos</li>
-          <Link to="/chat">
+          <Link to="chat">
             <li>Chat</li>
           </Link>
         </ul>

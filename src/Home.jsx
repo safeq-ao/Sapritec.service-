@@ -1,15 +1,14 @@
-import {TelaImagem} from "./components/tela-de-imagem/TelaImagem"
-import { PaginaDeBusca } from "./components/tela-de-pesquisa/PaginaDeBusca."
-
-
+import { Outlet } from "react-router-dom";
+import Header from "./components/header/Header";
+import { Footer } from "./components/footer/Footer";
 function Home() {
 
   return (
     <>
-      <TelaImagem />
-      <PaginaDeBusca />
+      <Header />
+      <Outlet />
+      <Footer />
     </>
-   
   );
 }
 

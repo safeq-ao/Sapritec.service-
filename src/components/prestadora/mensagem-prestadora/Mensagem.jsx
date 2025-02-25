@@ -1,20 +1,20 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Sidebar from '../sidebar-admin/Sidebar'
+import Sidebar from '../sidebar-prestadora/Sidebar'
 
 import MenuMensagem from '../../chat/MenuMensagem'
 import Detalhe from '../../chat/Detalhe'
 import CorpoChat from '../../chat/CorpoChat'
 
 
-const HomeAdmin = () => {
+const Mensagem = () => {
   return (
     <div className="flex w-[76%]">
       <MenuMensagem />
       <CorpoChat />
-      <Detalhe />
+      {/* <Detalhe /> */}
     </div>
   );
 }
 
-export default HomeAdmin
+export default Mensagem
