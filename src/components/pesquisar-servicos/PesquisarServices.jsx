@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { services } from "../../utils/json/CardServices";
-import { PiHouseLine, PiMapPin} from "react-icons/pi";
-import { FaRegBookmark} from "react-icons/fa";
+import { PiHouseLine, PiMapPin } from "react-icons/pi";
+import { FaRegBookmark } from "react-icons/fa";
 import FiltrodePesquisa from "./FiltrodePesquisa";
 import Servico from "./Servico";
-
+import { apiFetch } from "../../utils/api/api";
 
 const Pesquisar = () => {
-    const [selectedKey, setSelectedKey] = useState(1);
-  
 
-  // const showService=(key)=>{
-  //   const fetchData = services.find((service) => key == service.key);
-  //   setdetailService(fetchData);
-  //   console.log(fetchData);
-  // }
+  const [selectedKey, setSelectedKey] = useState(1);
 
-  const [searchQuery, setSearchQuery] = useState(""); 
-     const handleSearchChange =(query) => {
-       setSearchQuery(query);
-     };
+  const [services, setServices] = useState([]);
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await apiFetch.get(`/prestados/show`);
+        console.log(response.data);
+        setServices(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar serviços:", error);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   return (
     <div className="flex-col flex h-auto p-9 gap-8">
@@ -43,29 +52,34 @@ const Pesquisar = () => {
             {services.map((service) => {
               return (
                 <div
-                  key={service.key}
+                  key={service.id_servicoPrestador}
                   className="flex flex-col border-2 p-5 rounded-[8px] gap-4  w-[360px] h-auto"
                   onClick={() => setSelectedKey(service.key)}
                 >
                   <div className="flex flex-row items-center gap-3">
                     <img
-                      src={service.imagem}
+                      src={`http://localhost:3232/${service.servicoPrestador.imagem}`}
+
                       className="w-20 rounded-[6px] object-cover"
-                      alt="imagem dos serviços"
+                      alt={service.servicoPrestador.categoria_nome}
                     />
                     <span className="flex flex-col">
-                      <h3 className="font-bold">{service.servico}</h3>
-                      <p className="break-all">{service.descricao}</p>
+                      <h3 className="font-bold">
+                        {service.servicoPrestador.titulo}
+                      </h3>
+                      <p className="break-all">
+                        {service.servicoPrestador.descricao}
+                      </p>
                     </span>
                   </div>
 
                   <p className="flex items-center text-legenda gap-2">
                     <PiHouseLine />
-                    {service.localizacao[0]}
+                    Kilamba
                   </p>
                   <p className="flex items-center text-legenda gap-2">
                     <PiMapPin />
-                    {service.localizacao[1]}
+                    Angola
                   </p>
                   <p className="flex items-center gap-2">
                     <FaRegBookmark color="#9095A1" />
@@ -82,7 +96,7 @@ const Pesquisar = () => {
         </aside>
 
         {/* comentado */}
-        <Servico selectedKey={selectedKey} data={services} />
+        {/* <Servico selectedKey={selectedKey} data={services} /> */}
       </div>
     </div>
   );

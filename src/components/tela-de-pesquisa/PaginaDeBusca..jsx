@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { PiHouseLine } from "react-icons/pi";
 import { FaRegBookmark } from "react-icons/fa";
@@ -7,8 +7,25 @@ import { services, cards } from "../../utils/json/CardServices";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { apiFetch } from "../../utils/api/api";
 
 export function PaginaDeBusca() {
+  const [Category, setCategory] = useState([]);
+
+  const GetCategories = async() => {
+    await apiFetch
+      .get("/categoria/show")
+      .then((response) => {
+        setCategory (response.data)
+      })
+      .catch((error) => {
+        return error;
+      });
+  };
+  useEffect(() => {
+      GetCategories()
+  }, [])
+
   return (
     <main className="flex flex-col p-10 h-auto w-auto">
       <div className="flex flex-col items-center gap-10">
@@ -34,12 +51,13 @@ export function PaginaDeBusca() {
           />
 
           <select name="option" className="bg-[#F3F4F6] h-[100%] outline-none">
-            <option value="" disabled>
-              Escolha a sua opção
-            </option>
-            <option value="1">Localização</option>
-            <option value="2">Serviço</option>
-            <option value="3">Empresa</option>
+            {Category.map(option=>{
+              return (
+                <option value={option.nome} key={option.id_categoria}>
+                  {option.nome}
+                </option>
+              );
+            })}
           </select>
 
           <button
@@ -70,9 +88,11 @@ export function PaginaDeBusca() {
 
       {/* servicos que podes precisar */}
       <div className="flex flex-col items-center m-10">
-        <h1 className="
+        <h1
+          className="
         font-bold text-botao text-sm
-        lg:(text-32)">
+        lg:(text-32)"
+        >
           Serviços que pode precisar
         </h1>
 
@@ -81,10 +101,10 @@ export function PaginaDeBusca() {
         </h2>
 
         <article className="flex flex-row mt-10 flex-wrap gap-4 justify-center">
-          {services.slice(0,1).map((service) => {
+          {services.map((service) => {
             return (
               <div
-                key={service.key}
+                key={service.id_servicoPrestador}
                 className="flex flex-col border-2 p-5 rounded-[8px] gap-4  w-[360px] h-auto"
               >
                 <div className="flex flex-row items-center gap-3">

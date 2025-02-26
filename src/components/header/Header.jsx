@@ -12,7 +12,7 @@ const Header = () => {
  
   const { logged, setLogged } = useContext(CProvider);
   const {isOpen, setOpen} = useContext(SProvider);
-  console.log(isOpen)
+  // console.log(isOpen)
 
   const navigate = useNavigate();
   function HandleLogout() {
