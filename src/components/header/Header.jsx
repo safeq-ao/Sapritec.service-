@@ -28,7 +28,7 @@ const Header = () => {
   
 
   return (
-    <header className="flex justify-between items-center w-[100%]">
+    <header className="flex justify-between items-center w-[100%] p-5">
       <Link to={"/home"}>
         <h2 className="text-[20px] ml-9">
           <b className="text-botao">Sapritec</b>.service

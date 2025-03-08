@@ -36,6 +36,7 @@ import { EscolherUser } from "./components/login/EscolherUser.jsx";
 import TelaPrincipal from "./components/tela-principal/TelaPrincipal.jsx";
 import Mensagem from "./components/prestadora/mensagem-prestadora/Mensagem.jsx";
 import HomePrestadora from "./components/prestadora/tela-principal-prestadora/HomePrestadora.jsx";
+import Error404 from "./components/error/Error404.jsx";
 const token = localStorage.getItem("myTokenUser");
 
 const GoogleWrapper = () => (
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     element: <App />,
     children: [
+      {
+        path: "*",
+        element: <Error404 />,
+      },
       {
         path: "/",
         element: <EscolherUser />,
@@ -96,7 +101,7 @@ const router = createBrowserRouter([
       },
       {
         path: "prestadora",
-        element:<HomePrestadora />,
+        element: <HomePrestadora />,
         children: [
           {
             path: "historico",

@@ -3,28 +3,51 @@ import { FaSearch } from "react-icons/fa";
 import { PiHouseLine } from "react-icons/pi";
 import { FaRegBookmark } from "react-icons/fa";
 import { PiMapPin } from "react-icons/pi";
-import { services, cards } from "../../utils/json/CardServices";
-
+import { services} from "../../utils/json/CardServices";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+// import { Navigation, Pagination } from "swiper/modules";
 import { apiFetch } from "../../utils/api/api";
+import { FaSackDollar } from "react-icons/fa6";
+
 
 export function PaginaDeBusca() {
+  const [services, setServices] = useState([]);
   const [Category, setCategory] = useState([]);
+  const [qntCategory, setQntCategory] = useState([]);
 
-  const GetCategories = async() => {
+  const GetCategories = async () => {
     await apiFetch
       .get("/categoria/show")
       .then((response) => {
-        setCategory (response.data)
+        setCategory(response.data);
       })
       .catch((error) => {
         return error;
       });
   };
+  const GetCategoriesPerService = async () => {
+    await apiFetch
+      .get("/categoria/show/perService")
+      .then((response) => {
+         console.log(response.data)
+        setQntCategory(response.data);
+      })
+      .catch((error) => {
+        return error;
+      });
+  };
+
+   const fetchServices = async () => {
+        try {
+          const response = await apiFetch.get(`/prestados/show`);
+          setServices(response.data);
+        } catch (error) {
+          console.error("Erro ao buscar serviços:", error);
+        }
+      };
   useEffect(() => {
-      GetCategories()
-  }, [])
+    GetCategories(); GetCategoriesPerService(); fetchServices();
+  }, []);
 
   return (
     <main className="flex flex-col p-10 h-auto w-auto">
@@ -51,7 +74,7 @@ export function PaginaDeBusca() {
           />
 
           <select name="option" className="bg-[#F3F4F6] h-[100%] outline-none">
-            {Category.map(option=>{
+            {Category?.map((option) => {
               return (
                 <option value={option.nome} key={option.id_categoria}>
                   {option.nome}
@@ -69,16 +92,18 @@ export function PaginaDeBusca() {
         </span>
 
         <div
-          className="flex flex-row w-[13rem] bg-black
+          className="flex flex-row w-[13rem]
         lg:(w-[40rem])"
         >
           <Swiper slidesPerView={1} pagination={{ clickable: true }} navigation>
-            {cards.map((c) => (
-              <SwiperSlide key={c.key}>
-                <div className="flex flex-col bg-purple-200 p-10 w-[1] justify-center items-center">
-                  <p>{c.si}</p>
-                  <p className="text-lg">{c.service}</p>
-                  <p>{c.quantity}</p>
+            {qntCategory.map((c) => (
+              <SwiperSlide key={c.id_categoria}>
+                <div className="flex flex-col bg-purple-200 p-10 justify-center items-center">
+                  <p>
+                    <FaSackDollar size={"20px"} />
+                  </p>
+                  <p className="text-lg text-center">{c.nome}</p>
+                  <p>{c.totalServicos}</p>
                 </div>
               </SwiperSlide>
             ))}
@@ -86,7 +111,6 @@ export function PaginaDeBusca() {
         </div>
       </div>
 
-      {/* servicos que podes precisar */}
       <div className="flex flex-col items-center m-10">
         <h1
           className="
@@ -100,36 +124,47 @@ export function PaginaDeBusca() {
           Pesquise, escolhe e solicite serviços com rapidez.
         </h2>
 
-        <article className="flex flex-row mt-10 flex-wrap gap-4 justify-center">
+        <article className="flex gap-4 mt-5">
           {services.map((service) => {
             return (
               <div
                 key={service.id_servicoPrestador}
-                className="flex flex-col border-2 p-5 rounded-[8px] gap-4  w-[360px] h-auto"
+                className="flex flex-col border-2 p-5 rounded-lg gap-4  w-[360px] h-auto"
+                onClick={() => {
+                  sessionStorage.setItem(
+                    "selectkey",
+                    service.id_servicoPrestador
+                  ),
+                    setSelectedKey(service.id_servicoPrestador);
+                }}
               >
                 <div className="flex flex-row items-center gap-3">
                   <img
-                    src={service.imagem}
+                    src={`http://localhost:3232/${service.servicoPrestador.imagem}`}
                     className="w-20 rounded-[6px] object-cover"
-                    alt="imagem dos serviços"
+                    alt={service.servicoPrestador.categoria_nome}
                   />
                   <span className="flex flex-col">
-                    <h3 className="font-bold">{service.servico}</h3>
-                    <p className="break-all">{service.descricao}</p>
+                    <h3 className="font-bold">
+                      {service.servicoPrestador.titulo}
+                    </h3>
+                    <p className="break-all">
+                      {service.servicoPrestador.descricao}
+                    </p>
                   </span>
                 </div>
 
                 <p className="flex items-center text-legenda gap-2">
                   <PiHouseLine />
-                  {service.localizacao[0]}
+                  Kilamba
                 </p>
                 <p className="flex items-center text-legenda gap-2">
                   <PiMapPin />
-                  {service.localizacao[1]}
+                  Angola
                 </p>
-                <p className="flex items-center gap-2">
-                  <FaRegBookmark color="#9095A1" />
-                  {service.preco}
+                <p className="flex items-center gap-2 text-legenda">
+                  <FaRegBookmark />
+                  {service.servicoPrestador.tags}
                 </p>
               </div>
             );

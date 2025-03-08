@@ -8,9 +8,9 @@ import { apiFetch } from "../../utils/api/api";
 
 const Pesquisar = () => {
 
-  const [selectedKey, setSelectedKey] = useState(1);
-
-  const [services, setServices] = useState([]);
+  
+  const [selectedKey, setSelectedKey] = useState(null)
+  const [getServices, setGetServices] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
   const handleSearchChange = (event) => {
@@ -21,8 +21,7 @@ const Pesquisar = () => {
     const fetchServices = async () => {
       try {
         const response = await apiFetch.get(`/prestados/show`);
-        console.log(response.data);
-        setServices(response.data);
+        setGetServices(response.data);
       } catch (error) {
         console.error("Erro ao buscar serviços:", error);
       }
@@ -31,6 +30,14 @@ const Pesquisar = () => {
     fetchServices();
   }, []);
 
+  const services = getServices.filter((service) => {
+    return service.servicoPrestador.titulo
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+  });
+ 
   return (
     <div className="flex-col flex h-auto p-9 gap-8">
       <h1>
@@ -53,13 +60,18 @@ const Pesquisar = () => {
               return (
                 <div
                   key={service.id_servicoPrestador}
-                  className="flex flex-col border-2 p-5 rounded-[8px] gap-4  w-[360px] h-auto"
-                  onClick={() => setSelectedKey(service.key)}
+                  className="flex flex-col border-2 p-5 rounded-lg gap-4  w-[360px] h-auto"
+                  onClick={() => {
+                    sessionStorage.setItem(
+                      "selectkey",
+                      service.id_servicoPrestador
+                    ),
+                      setSelectedKey(service.id_servicoPrestador);
+                  }}
                 >
                   <div className="flex flex-row items-center gap-3">
                     <img
                       src={`http://localhost:3232/${service.servicoPrestador.imagem}`}
-
                       className="w-20 rounded-[6px] object-cover"
                       alt={service.servicoPrestador.categoria_nome}
                     />
@@ -81,9 +93,9 @@ const Pesquisar = () => {
                     <PiMapPin />
                     Angola
                   </p>
-                  <p className="flex items-center gap-2">
-                    <FaRegBookmark color="#9095A1" />
-                    {service.preco}
+                  <p className="flex items-center gap-2 text-legenda">
+                    <FaRegBookmark />
+                    {service.servicoPrestador.tags}
                   </p>
                 </div>
               );
@@ -96,7 +108,7 @@ const Pesquisar = () => {
         </aside>
 
         {/* comentado */}
-        {/* <Servico selectedKey={selectedKey} data={services} /> */}
+        <Servico selectedKey={selectedKey} />
       </div>
     </div>
   );

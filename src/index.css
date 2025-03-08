@@ -4,4 +4,9 @@
 
 body{
   @apply bg-white text-[62.5%] m-0 p-0 box-border
+
+}
+
+@theme{
+ --colors-*:initial;
 }
