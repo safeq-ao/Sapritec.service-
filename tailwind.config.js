@@ -35,6 +35,10 @@ export default {
         xl: "1280px",
         // => @media (min-width: 1280px) { ... }
       },
+      fontFamily: {
+        'sans': ['Poppins', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'], // Optional: You can also define a specific 'poppins' font family
+      },
     },
   },
   plugins: [],
