@@ -15,7 +15,8 @@ export const EscolherUser = () => {
     const novoUser = escolha[index];
     setUser(novoUser);
 
-    const Redirect = novoUser === "prestador" ? "/cadastrar" : null;
+    // Redirect to appropriate page based on user choice
+    const Redirect = novoUser === "prestador" ? "/cadastrar" : "/home";
     localStorage.setItem("role", novoUser);
     navigate(Redirect);
   }
