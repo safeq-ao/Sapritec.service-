@@ -16,7 +16,7 @@ export const EscolherUser = () => {
     const novoUser = choice[index] === 1 ? escolha[0] : escolha[1];
     setUser(novoUser);
   
-      const Redirect = novoUser === "prestador" ? "/cadastrar" : null;
+      const Redirect = novoUser === "prestador" ? "/cadastrar-prestador" : "/cadastrar-cliente";
       localStorage.setItem("role", novoUser)
       navigate(Redirect);
    

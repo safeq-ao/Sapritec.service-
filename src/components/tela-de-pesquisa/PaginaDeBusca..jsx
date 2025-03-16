@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import { Navigation, Pagination } from "swiper/modules";
 import { apiFetch } from "../../utils/api/api";
 import { FaSackDollar } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 export function PaginaDeBusca() {
@@ -124,8 +125,8 @@ export function PaginaDeBusca() {
           Pesquise, escolhe e solicite serviços com rapidez.
         </h2>
 
-        <article className="flex gap-4 mt-5">
-          {services.map((service) => {
+        <article className="flex mt-5 flex-wrap justify-center items-center gap-5">
+          {services.slice(services.length/2==0? services.length/2: 0, 6).map((service) => {
             return (
               <div
                 key={service.id_servicoPrestador}
@@ -171,9 +172,11 @@ export function PaginaDeBusca() {
           })}
         </article>
 
-        <button className="w-[100px] h-[52px] bg-botao rounded-[4px] mt-10 text-white text-18">
-          Ver mais
-        </button>
+        <Link to={"pesquisar"}>
+          <button className="w-[100px] h-[52px] bg-botao rounded-[4px] mt-10 text-white text-18">
+            Ver mais
+          </button>
+        </Link>
       </div>
     </main>
   );

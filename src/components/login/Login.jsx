@@ -18,9 +18,12 @@ const Login = () => {
 
   //funcao que redirectiona o tela home ao fazer login convencional
   async function HandleLogin(event) {
+
+    console.log(e.target)
     event.preventDefault();
 
     if (dados.email.trim() && dados.senha.trim()) {
+ 
       await Login(dados.email, dados.senha);
       if (localStorage.getItem("myTokenUser")) {
         navigate("/home");

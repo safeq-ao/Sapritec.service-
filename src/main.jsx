@@ -23,7 +23,7 @@ import Pedidos from "./components/prestadora/pedidos-recebidos/Pedidos.jsx";
 import Pagamentos from "./components/prestadora/pagamentos-transacoes/Pagamentos.jsx";
 import Historico from "./components/prestadora/historico-pedidos/Historico.jsx";
 import Dashboard from "./components/prestadora/dashboard/Dashboard.jsx";
-import Cadastrar from "./components/login/Cadastrar.jsx";
+import CadastrarPrestador from "./components/login/CadastrarPrestador.jsx";
 import Login from "./components/login/Login.jsx";
 import ForgotPassword from "./components/login/ForgotPassword.jsx";
 import VerifyEmail from "./components/login/VerifyEmail.jsx";
@@ -37,6 +37,7 @@ import TelaPrincipal from "./components/tela-principal/TelaPrincipal.jsx";
 import Mensagem from "./components/prestadora/mensagem-prestadora/Mensagem.jsx";
 import HomePrestadora from "./components/prestadora/tela-principal-prestadora/HomePrestadora.jsx";
 import Error404 from "./components/error/Error404.jsx";
+import CadastrarUser from "./components/login/CadastrarUser.jsx";
 const token = localStorage.getItem("myTokenUser");
 
 const GoogleWrapper = () => (
@@ -58,8 +59,12 @@ const router = createBrowserRouter([
         element: <EscolherUser />,
       },
       {
-        path: "cadastrar",
-        element: <Cadastrar />,
+        path: "cadastrar-cliente",
+        element: <CadastrarUser />,
+      },
+      {
+        path: "cadastrar-prestador",
+        element: <CadastrarPrestador />,
       },
       {
         path: "login",

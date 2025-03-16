@@ -5,9 +5,9 @@ import { SProvider } from "./utils/context/sizes";
 
 
 function App() { 
+
   const { logged, setLogged } = useContext(CProvider);
 
-  
   // useEffect(() => {
     
   //   const token = localStorage.getItem("myTokenUser");
