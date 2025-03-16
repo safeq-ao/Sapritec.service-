@@ -8,6 +8,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { register } from "swiper/element/bundle";
+import { ThemeProvider } from "./utils/context/themeContext";
+import Context from "./utils/context/autentication.jsx";
 
 register();
 import "swiper/css";
@@ -17,7 +19,6 @@ import "swiper/css/scrollbar";
 import Pesquisar from "./components/pesquisar-servicos/PesquisarServices.jsx";
 import Home from "./Home.jsx";
 import { ChatUser } from "./components/tela-chat-usuario/ChatUser.jsx";
-import Context from "./utils/context/autentication.jsx";
 import Resumo from "./components/prestadora/resumo-pedidos/Resumo.jsx";
 import Pedidos from "./components/prestadora/pedidos-recebidos/Pedidos.jsx";
 import Pagamentos from "./components/prestadora/pagamentos-transacoes/Pagamentos.jsx";
@@ -139,8 +140,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Context>
-      <RouterProvider router={router} />
-    </Context>
+    <ThemeProvider>
+      <Context>
+        <RouterProvider router={router} />
+      </Context>
+    </ThemeProvider>
   </React.StrictMode>
 );
