@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { BiPointer } from "react-icons/bi";
 import { FaCalendarCheck, FaSearch } from 'react-icons/fa';
@@ -6,12 +6,11 @@ import { Link, useNavigate } from 'react-router-dom';
 // import { C_Provider } from '../../utils/context/autentication';
 
 
-const Cadastrar = () => {
+const CadastrarUser = () => {
     const navigate= useNavigate();
 
-    function HandleLogin(){
-       navigate("/login")
-    }
+  
+    const [checkConfirm, setCheckConfirm] = useState(false);
 
   return (
     <div className="bg-fundo flex-col p-10">
@@ -34,7 +33,7 @@ const Cadastrar = () => {
                 htmlFor="Pnome"
                 className="flex flex-col rounded-2xl font-semibold gap-2"
               >
-                Primeiro nome
+                Nome completo
                 <input
                   type="text"
                   id="Pnome"
@@ -42,13 +41,13 @@ const Cadastrar = () => {
                 />
               </label>
               <label
-                htmlFor="Snome"
+                htmlFor="Tel"
                 className="flex flex-col font-semibold gap-2"
               >
-                Segundo nome
+                Telefone
                 <input
-                  type="text"
-                  id="Snome"
+                  type="tel"
+                  id="Tel"
                   className="bg-pesquisar outline-none p-2 w-[250px] rounded-[4px]"
                 />
               </label>
@@ -76,10 +75,26 @@ const Cadastrar = () => {
                   className="bg-pesquisar outline-none p-2 rounded-[4px]"
                 />
               </label>
+              <label
+                htmlFor="Cpassword"
+                className="flex flex-col font-semibold gap-2"
+              >
+                Confirmar senha
+                <input
+                  type="Cpassword"
+                  id="Cpassword"
+                  className="bg-pesquisar outline-none p-2 rounded-[4px]"
+                />
+              </label>
             </div>
 
             <div className="flex gap-1">
-              <input type="checkbox" name="" id="" />
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                onClick={() => setCheckConfirm(!checkConfirm)}
+              />
               <p>
                 Ao me inscrever, concordo com os
                 <b className="text-botao">
@@ -88,8 +103,14 @@ const Cadastrar = () => {
               </p>
             </div>
 
-            <button className="p-2 w-[100%] text-white rounded-[4px] self-center bg-botao text-sm" 
-            onClick={HandleLogin}>
+            <button
+              className={`p-2 w-[100%] text-white rounded-[4px] self-center text-sm ${
+                checkConfirm ? "bg-botao opacity-100 cursor-pointer" : "bg-botao opacity-30 cursor-default"
+              }`}
+              onClick={() => {
+                checkConfirm ? navigate("/login") : navigate(-1);
+              }}
+            >
               Cadastre-se
             </button>
 
@@ -104,7 +125,10 @@ const Cadastrar = () => {
 
             <span className="flex justify-center">
               <p>
-                Usuário retornando? <Link to={"/login"}><b className="text-botao">Faça login</b></Link>
+                Usuário retornando?{" "}
+                <Link to={"/login"}>
+                  <b className="text-botao">Faça login</b>
+                </Link>
               </p>
             </span>
           </form>
@@ -115,12 +139,12 @@ const Cadastrar = () => {
 
           <ul className="list-none flex flex-col gap-5 text-sm ">
             <li className="flex items-center break-word w-2/3 gap-6">
-              <FaSearch size={"40"} color='red' /> Descubra prestadores confiáveis para
-              atender às suas necessidades, tudo em um só lugar.
+              <FaSearch size={"40"} color="red" /> Descubra prestadores
+              confiáveis para atender às suas necessidades, tudo em um só lugar.
             </li>
             <li className="flex items-center break-word w-2/3 gap-6">
-              <BiPointer size={"40"} color='green'/> Acompanhe seus pedidos e acesse serviços
-              personalizados diretamente na sua conta.
+              <BiPointer size={"40"} color="green" /> Acompanhe seus pedidos e
+              acesse serviços personalizados diretamente na sua conta.
             </li>
             <li className="flex items-center break-word w-2/3 gap-6">
               <FaCalendarCheck size={"20"} color="orange" />
@@ -134,4 +158,4 @@ const Cadastrar = () => {
   );
 }
 
-export default Cadastrar
+export default CadastrarUser

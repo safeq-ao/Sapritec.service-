@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Search, Home, Bookmark, MapPin } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { apiFetch } from "../../utils/api/api";
+<<<<<<< HEAD
 import { useTheme } from "../../utils/context/themeContext";
+=======
+import { FaSackDollar } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+>>>>>>> e184da76fa8b4609920ea8d2d2926a4f1be57220
 
 // Mock Data
 const mockCategories = [
@@ -168,12 +173,31 @@ export function PaginaDeBusca() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Category Swiper */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Categorias Populares</h2>
         <Swiper slidesPerView={"auto"} spaceBetween={10} className="!overflow-visible">
           {categoryCounts.map((category) => (
             <SwiperSlide key={category.id_categoria} style={{ width: "auto" }}>
+=======
+      <div className="flex flex-col items-center m-10">
+        <h1
+          className="
+        font-bold text-botao text-sm
+        lg:(text-32)"
+        >
+          Serviços que pode precisar
+        </h1>
+
+        <h2 className="text-legenda text-sm">
+          Pesquise, escolhe e solicite serviços com rapidez.
+        </h2>
+
+        <article className="flex mt-5 flex-wrap justify-center items-center gap-5">
+          {services.slice(services.length/2==0? services.length/2: 0, 6).map((service) => {
+            return (
+>>>>>>> e184da76fa8b4609920ea8d2d2926a4f1be57220
               <div
                 className={`flex flex-col items-center p-6 rounded-lg shadow-md w-48 transition-colors duration-300 ${
                   darkMode
@@ -193,6 +217,7 @@ export function PaginaDeBusca() {
         </Swiper>
       </section>
 
+<<<<<<< HEAD
       {/* Services Listing */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Serviços Disponíveis</h2>
@@ -237,6 +262,13 @@ export function PaginaDeBusca() {
         >
           Ver Mais Serviços
         </button>
+=======
+        <Link to={"pesquisar"}>
+          <button className="w-[100px] h-[52px] bg-botao rounded-[4px] mt-10 text-white text-18">
+            Ver mais
+          </button>
+        </Link>
+>>>>>>> e184da76fa8b4609920ea8d2d2926a4f1be57220
       </div>
     </main>
   );
