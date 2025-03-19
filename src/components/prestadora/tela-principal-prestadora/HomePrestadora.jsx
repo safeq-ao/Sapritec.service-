@@ -1,13 +1,8 @@
-
 import { Outlet } from "react-router-dom";
-import Sidebar from "../sidebar-prestadora/Sidebar";
-function HomePrestadora(){
-    return(
-        <div className="flex">  
-        <Sidebar />
-        <Outlet/>  
-        </div>
-    ) 
+import SidebarPrestadora from "../sidebar/SidebarPrestadora";
+
+function HomePrestadora() {
+  return <SidebarPrestadora><Outlet /></SidebarPrestadora>;
 }
 
-export default HomePrestadora
+export default HomePrestadora;
