@@ -39,6 +39,7 @@ import Mensagem from "./components/prestadora/mensagem-prestadora/Mensagem.jsx";
 import HomePrestadora from "./components/prestadora/tela-principal-prestadora/HomePrestadora.jsx";
 import Error404 from "./components/error/Error404.jsx";
 import Favoritos from "./components/favoritos/Favoritos.jsx";
+import AdicionarServico from "./components/prestadora/adicionar-servico/AdicionarServico.jsx";
 
 // Get the client id from environment variables
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
@@ -134,6 +135,10 @@ const router = createBrowserRouter([
           {
             path: "dashboard",
             element: <Dashboard />,
+          },
+          {
+            path: "adicionar-servico",
+            element: <AdicionarServico />,
           },
         ],
       },

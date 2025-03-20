@@ -16,7 +16,8 @@ import {
   Settings,
   Sun,
   Moon,
-  Bell
+  Bell,
+  Plus  // Ensure Plus icon is imported
 } from 'lucide-react';
 
 const SidebarPrestadora = ({ children }) => {
@@ -82,6 +83,11 @@ const SidebarPrestadora = ({ children }) => {
       icon: <MessageSquare size={20} strokeWidth={1.5} />,
       path: '/prestadora/mensagem',
       badge: 3
+    },
+    {
+      title: 'Adicionar Serviço',
+      icon: <Plus size={20} strokeWidth={1.5} />,
+      path: '/prestadora/adicionar-servico'
     },
     {
       title: 'Perfil',
